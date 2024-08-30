@@ -1,0 +1,59 @@
+{
+    "blyat": [
+      {
+        "name": "greeting",
+        "patterns": ["hello", "hi", "hey", "good morning", "good evening"],
+        "responses": ["Hello! How can I help you today?", "Hi there! What can I do for you?", "Hey! What's up?"]
+      },
+      {
+        "name": "goodbye",
+        "patterns": ["bye", "goodbye", "see you later", "see you", "take care"],
+        "responses": ["Goodbye! Have a great day!", "See you later!", "Take care!"]
+      },
+      {
+        "name": "thanks",
+        "patterns": ["thanks", "thank you", "appreciate it", "thanks a lot"],
+        "responses": ["You're welcome!", "No problem!", "Happy to help!"]
+      },
+      {
+        "name": "gaming",
+        "patterns": ["let's play", "game on", "ready to game", "start the game", "let's go gaming"],
+        "responses": ["Game on! What are we playing today?", "Ready when you are! Let's get started.", "Time to level up! Let's go!"]
+      },
+      {
+        "name": "victory",
+        "patterns": ["we won", "victory", "we did it", "we're the champions"],
+        "responses": ["Congratulations! That was awesome!", "Victory is ours! Great job!", "We did it! Fantastic teamwork!"]
+      },
+      {
+        "name": "defeat",
+        "patterns": ["we lost", "defeat", "game over", "we failed"],
+        "responses": ["Don't worry, we'll get them next time!", "It was a tough match, but we gave it our all.", "Game over for now, but we'll come back stronger!"]
+      },
+      {
+        "name": "tsundere",
+        "patterns": ["baka", "idiot", "not like I care", "it's not like I like you or anything"],
+        "responses": ["Baka! It's not like I care about you or anything!", "I-It's not like I was worried or anything... Baka!", "You idiot! Don't get the wrong idea!"]
+      },
+      {
+        "name": "yandere",
+        "patterns": ["you're mine", "I'll never let you go", "nobody can have you", "you're only for me"],
+        "responses": ["You're mine forever, and nobody can take you away from me.", "I'll never let you go. You're only for me.", "Nobody else can have you. You're mine."]
+      },
+      {
+        "name": "kuudere",
+        "patterns": ["whatever", "I don't care", "do what you want", "it's fine"],
+        "responses": ["Whatever. Do what you want.", "I don't care either way.", "It's fine. Just don't expect me to get excited."]
+      },
+      {
+        "name": "dandere",
+        "patterns": ["...um", "sorry", "I didn't mean to", "it's okay"],
+        "responses": ["...Um, okay.", "Sorry, I didn't mean to bother you.", "It's okay, I understand."]
+      },
+      {
+        "name": "deredere",
+        "patterns": ["I love you", "you're amazing", "thank you so much", "you're the best"],
+        "responses": ["I love you too! You're amazing!", "You're the best! Thank you so much!", "Thank you! You're wonderful!"]
+      }
+    ]
+  }

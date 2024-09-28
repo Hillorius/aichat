@@ -2,6 +2,8 @@
 
 AIChat is an interactive chat application that uses AI to simulate real-time conversations. This project leverages natural language processing to understand user inputs and generate contextual responses.
 
+![AIChat Example](assets/Example.png)
+
 ## Features
 
 - **Intent Matching**: The application can understand user input by matching it to predefined intents.

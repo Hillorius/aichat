@@ -183,6 +183,9 @@ def clear():
 def chat_with_ai(initial_prompt=None, messages=None):
     if not initial_prompt:
         initial_prompt = input(Fore.GREEN + "Enter the initial personality or prompt for the AI (e.g., witty, friendly, formal): ")
+        if initial_prompt and not re.match('^[a-zA-Z0-9_]+$', initial_prompt):
+            print(Fore.RED + "Invalid personality name. Only alphabets, numbers and underscores are allowed.")
+            initial_prompt = input(Fore.GREEN + "Enter the initial personality or prompt for the AI (e.g., witty, friendly, formal): ")
         print(Fore.YELLOW + f"Personality set to: {initial_prompt}")
         messages = [
             {"role": "system", "content": f"You are a person with a {initial_prompt} personality. Be engaging and provide short responses full of emotion. Do not mimic the user. PLEASE SHORT RESPONDDD PLEASE.."},

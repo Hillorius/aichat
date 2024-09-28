@@ -20,3 +20,22 @@ Requirements :
 - [requests](https://pypi.org/project/requests/)
 
 - **Dont worry the .bat files automaticly install the requirements if you already have *pip*.**
+
+  ## Information
+
+ **Additional Commands:**
+- exit or back: Exit the conversation and return to the main menu.
+- save: Save the current conversation to a file.
+- reset: Reset the conversation while retaining the current AI personality.
+- retry: Retry the AI's response to the last message.
+
+ **AI Model**
+ AIChat uses the following model for generating responses:
+
+ Model: Sao10K/L3-70B-Euryale-v2.1
+ API Endpoint: https://api.deepinfra.com/v1/openai/chat/completions
+
+ 
+ 
+
+  

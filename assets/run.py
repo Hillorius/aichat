@@ -115,6 +115,8 @@ def display_main_menu():
     choice = input(Fore.GREEN + "Select an option: ")
 
     if choice == '1':
+        clear()
+        print_gradient_art(ascii_art_lines)
         chat_with_ai()
     elif choice == '2':
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -122,7 +124,9 @@ def display_main_menu():
     elif choice == '3':
         os.system('cls' if os.name == 'nt' else 'clear')
         print_gradient_art(ascii_art_lines)
+        time.sleep(1.5)
         print(Fore.RED + "Exiting. Goodbye!")
+        exit()
     else:
         print(Fore.RED + "Invalid option! Returning to menu.")
         display_main_menu()

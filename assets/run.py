@@ -175,6 +175,7 @@ def continue_chat(personality):
                 else:
                     print(Fore.MAGENTA + content)
 
+            # Continue the conversation
             chat_with_ai(personality, messages)
     else:
         print(Fore.RED + f"No chat found for personality: {personality}.")
@@ -202,8 +203,10 @@ def chat_with_ai(initial_prompt=None, messages=None):
 
         if user_input.lower() in ['exit', 'back', 'menu']:
             print(Fore.RED + "Returning to main menu...")
+            time.sleep(2.5)
             save_chat_history(messages, initial_prompt)
             clear()
+            time.sleep(1.5)
             display_main_menu()
             break
 

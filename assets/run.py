@@ -131,9 +131,18 @@ def simulate_real_time_response(response, color=Fore.GREEN, delay=0.03, variance
 
 # Save chat history to a JSON file
 def sanitize_filename(filename):
-    """Remove invalid characters for filenames."""
-    # Replace invalid characters with underscores or remove them
-    return re.sub(r'[<>:"/\\|?*]', '_', filename)
+    """Remove invalid characters for filenames and trim trailing invalid patterns."""
+    # Replace invalid characters with underscores
+    sanitized = re.sub(r'[<>:"/\\|?*]', '_', filename)
+
+    # Remove trailing periods or spaces (invalid in filenames)
+    sanitized = sanitized.rstrip(' .')
+
+    # Ensure the filename is not empty after sanitization
+    if not sanitized:
+        sanitized = "default_filename"
+    
+    return sanitized
 
 def save_chat_history(messages, cleaned_prompt):
     chat_data = {
@@ -147,7 +156,7 @@ def save_chat_history(messages, cleaned_prompt):
     os.makedirs('assets', exist_ok=True)
 
     # Create a file path using the sanitized prompt
-    file_path = f'assets/chat_history_{sanitized_prompt}.json'
+    file_path = f'assets/chat_history_{sanitized_prompt}_chat.json'
     
     # Save chat history to the file
     with open(file_path, 'w') as file:
@@ -175,7 +184,7 @@ def display_main_menu():
         load_and_display_personality_list()
     elif choice == '3':
         clear()
-        print_gradient_art()
+        print_gradient_art(lines=ascii_art_lines)
         time.sleep(1.5)
         print(Fore.RED + "Goodbye! Have a great day!")
         exit()
@@ -245,11 +254,13 @@ def chat_with_ai(initial_prompt=None, messages=None):
     """Start or continue chatting with the AI."""
     if not initial_prompt:
         initial_prompt = input(Fore.LIGHTGREEN_EX + "\nEnter AI's personality (e.g., witty, friendly): ").strip()
-        cleaned_prompt = re.sub(r'[^a-zA-Z0-9_,.\s]', '', initial_prompt)
+
+        # Clean the prompt by removing invalid characters and trimming invalid patterns
+        cleaned_prompt = sanitize_filename(initial_prompt)
         print(Fore.LIGHTYELLOW_EX + f"Personality set to: {cleaned_prompt}")
 
         # Create system message for AI's personality
-        messages = [{"role": "system", "content": f"You are {initial_prompt}. Respond in a concise, engaging, and emotional way. Be interactive, ask questions, react, but don't mimic the user. Keep replies under 100 characters."}]
+        messages = [{"role": "system", "content": f"You are {cleaned_prompt}. Respond in a concise, engaging, and emotional way. Be interactive, ask questions, react like `*Miko smiles warmly at your request. She can tell you're tired and in need of rest.* Miko: 'Of course, little one. You must be tired after everything that's happened today. You can rest now.' *She gently lays you down on a soft surface, whether it's a bed or couch. She makes sure you're comfortable, tucking you in gently with a soft blanket.*`, but don't mimic the user. Keep replies under 180 characters."}]
 
     last_user_input = None
 
@@ -272,14 +283,16 @@ def chat_with_ai(initial_prompt=None, messages=None):
             print(Fore.YELLOW + "\nResetting conversation...")
             messages = [{"role": "system", "content": f"Reset personality as {cleaned_prompt}."}]
             clear()
-            print_gradient_art()
+            print_gradient_art(lines=ascii_art_lines)
             continue
         elif user_input.lower() == 'retry':
             if last_user_input is None:
                 print(Fore.RED + "No previous message to retry.")
                 continue
             print(Fore.YELLOW + "Retrying last message...")
-            user_input = last_user_input
+            user_input = last_user_input 
+        else:
+            last_user_input = user_input
 
         # Add user input to the chat history
         messages.append({"role": "user", "content": user_input})
@@ -303,3 +316,4 @@ def chat_with_ai(initial_prompt=None, messages=None):
 
 if __name__ == "__main__":
     display_main_menu()
+
